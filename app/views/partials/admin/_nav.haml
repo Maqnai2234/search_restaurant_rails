@@ -1,0 +1,11 @@
+%nav.purple.darken-3
+  .nav-wrapper.container
+    %a.brand-logo{:href => "#!"} FoodSearch
+    %a.button-collapse{"data-activates" => "mobile-demo", :href => "#"}
+      %i.material-icons menu
+    %ul.right.hide-on-med-and-down
+      %li
+        = link_to "Cambiar ciudad", remove_city_path, class: "waves-effect waves-light btn indigo darken-3", method: :delete
+    %ul#mobile-demo.side-nav
+      %li
+        = link_to "Cambiar ciudad", remove_city_path, method: :delete
