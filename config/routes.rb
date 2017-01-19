@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "main#landing"
-  post "/city_selected", to: "main#city_selected"
-  get "/city_selected", to: "main#city_selected"
+  post "/app", to: "main#app"
+  get "/app", to: "main#app"
+  delete "/remove_city", to: "main#remove_city"
 end

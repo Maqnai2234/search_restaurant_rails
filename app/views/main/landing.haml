@@ -5,8 +5,8 @@
         %h2.white-text Encuentra los mejores restaurantes de tu ciudad
         %p.white-text Solamente necesitamos saber tu ciudad, luego dejanos hacer nuestro trabajo
         %div.row
-          = form_tag city_selected_path, method: :post do
+          = form_tag app_path, method: :post do
             .input-field.col.s9.white
               = select_tag :city, options_from_collection_for_select(@cities, 'id', 'name'), prompt: "Selecciona tu ciudad"
             .input-field.col.s3.valign-wrapper
-              = submit_tag "Continuar", class: "waves-effect waves-light btn valign"
+              = submit_tag "Continuar", class: "waves-effect waves-light btn valign darken-3"
