@@ -9,7 +9,7 @@ class Admin::SpecialitiesController < Admin::BaseController
   end
 
   def create
-    @speciality = speciality.new speciality_params
+    @speciality = Speciality.new speciality_params
     if @speciality.save
       redirect_to admin_specialities_path
     else
