@@ -1,0 +1,27 @@
+= form_for [:admin, @restaurant], multipart: true, class:"row s12" do |f|
+  = render 'partials/admin/form_errors', object: @restaurant
+  .input-field
+    = f.label :name, "Nombre"
+    = f.text_field :name, placeholder: "Ingrese su nombre" , class: "form-control"
+  .input-field.file-field
+    .btn.indigo.darken-3
+      %span Imagen
+      = f.file_field :image
+    .file-path-wrapper
+      %input{class: "file-path validate", type: "text"}
+  .input-field
+    = f.label :stars, "Estrellas"
+    = f.number_field :stars, placeholder: "Numero de estrellas" , class: "form-control"
+  -# .form-group
+  -#   = f.label :user_id
+  -#   = f.select :user_id, User.all.collect { |p| [p.username , p.id ]},{ prompt: I18n.t('admin.global.select')}, {class: "form-control"}
+  -# .form-group
+  -#   = f.label :categories
+  -#   = f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |b|
+  -#     .form-check
+  -#       = b.label(class: "form-check-label") { b.check_box(class: "form-check-input") + b.text }
+  -# .form-group
+  -#   = f.label :tags
+  -#   = f.collection_select :tag_ids, Tag.all, :id, :name, {}, {class: "js-tag-select form-control", multiple: "multiple"}
+  .input-field
+    =  f.submit "Crear Restaurante", class:"btn btn-primary indigo darken-3"
