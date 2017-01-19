@@ -42,7 +42,7 @@ class MainController < ApplicationController
     end
 
     def app_content
-      @restaurants = Restaurant.page(params[:page]).per(2)
+      @restaurants = Restaurant.page(params[:page]).per(10)
     end
 
 end
