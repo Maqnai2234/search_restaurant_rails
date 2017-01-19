@@ -12,10 +12,12 @@ class MainController < ApplicationController
         redirect_to root_path
       else
         find_city
+        app_content
       end
     else
       session[:city] = params[:city]
       find_city
+      app_content
     end
 
 
@@ -37,6 +39,10 @@ class MainController < ApplicationController
     def find_city
       city = City.find(session[:city]).name
       @string_welcome = "Te encuentras en: #{city}"
+    end
+
+    def app_content
+      @restaurants = Restaurant.page(params[:page]).per(2)
     end
 
 end

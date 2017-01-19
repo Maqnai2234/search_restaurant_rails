@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170119164002) do
+ActiveRecord::Schema.define(version: 20170119194742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,13 +38,13 @@ ActiveRecord::Schema.define(version: 20170119164002) do
     t.string   "name"
     t.integer  "stars"
     t.string   "image"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "specialty_id"
-    t.index ["specialty_id"], name: "index_restaurants_on_specialty_id", using: :btree
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "speciality_id"
+    t.index ["speciality_id"], name: "index_restaurants_on_speciality_id", using: :btree
   end
 
-  create_table "specialties", force: :cascade do |t|
+  create_table "specialities", force: :cascade do |t|
     t.string   "name"
     t.string   "image"
     t.datetime "created_at", null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20170119164002) do
   end
 
   add_foreign_key "phones", "zones"
-  add_foreign_key "restaurants", "specialties"
+  add_foreign_key "restaurants", "specialities"
   add_foreign_key "zones", "cities"
   add_foreign_key "zones", "restaurants"
 end

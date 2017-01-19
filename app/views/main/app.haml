@@ -24,28 +24,34 @@
       .col.s3
         = link_to "Buscar", remove_city_path, class: "waves-effect waves-light btn indigo darken-3", method: :delete
   .row
-    .col.s4
-      .card
-        .card-image.waves-effect.waves-block.waves-light
-          =image_tag "logo_restaurant.jpg", class: "activator"
-        .card-content
-          %span.card-title.activator.grey-text.text-darken-4.center.center-align
-            Fish&Wine
-          %p
-            %strong
-              Telefono:
-            +51 975260616
-          %p
-            %strong
-              Especialidad:
-            Lomo saltado
-          %p
-            %strong
-              Horario de atención:
-            09:00am - 10:00pm
-          %p
-            %strong
-              Dirección:
-            9 de diciembre 209
-        .card-action
-          = link_to "Ver", remove_city_path, class: "waves-effect waves-light btn indigo darken-3"
+    - @restaurants.each do |restaurant|
+      .col.s4
+        .card
+          .card-image.waves-effect.waves-block.waves-light
+            =image_tag restaurant.image.url, class: "activator"
+          .card-content
+            %span.card-title.activator.grey-text.text-darken-4.center.center-align
+              = restaurant.name
+            %p
+              %strong
+                Zonas:
+              - restaurant.zones.each do |zone|
+                %li
+                  = zone.address
+            %p
+              %strong
+                Especialidad:
+              = restaurant.speciality.name
+            %p
+              %strong
+                Horario de atención:
+              09:00am - 10:00pm
+            %p
+              %strong
+                Dirección:
+              9 de diciembre 209
+          .card-action
+            = link_to "Ver", remove_city_path, class: "waves-effect waves-light btn indigo darken-3"
+  .row
+    .col.s12
+      = paginate @restaurants

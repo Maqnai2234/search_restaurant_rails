@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       resources :phones
     end
     resources :cities
-    resources :specialties
+    resources :specialities
   end
 
   get '/admin' => redirect('/admin/dashboard')

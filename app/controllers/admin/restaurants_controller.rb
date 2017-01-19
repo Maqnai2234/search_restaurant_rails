@@ -7,6 +7,7 @@ class Admin::RestaurantsController < Admin::BaseController
 
   def new
     @restaurant = Restaurant.new
+    @specialities = Speciality.all
   end
 
   def create
@@ -19,6 +20,7 @@ class Admin::RestaurantsController < Admin::BaseController
   end
 
   def edit
+    @specialities = Speciality.all
 
   end
 
@@ -36,12 +38,12 @@ class Admin::RestaurantsController < Admin::BaseController
   end
 
   def show
-    
+
   end
 
   private
    def restaurant_params
-     params.require(:restaurant).permit(:name, :image, :stars)
+     params.require(:restaurant).permit(:name, :image, :stars, :speciality_id)
    end
    def find_restaurant
      @restaurant = Restaurant.find(params[:id])

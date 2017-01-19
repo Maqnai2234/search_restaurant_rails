@@ -13,4 +13,6 @@
     = f.label :stars, "Estrellas"
     = f.number_field :stars, placeholder: "Numero de estrellas" , class: "form-control"
   .input-field
+    = f.select :speciality_id, options_from_collection_for_select(@specialities, 'id', 'name'), prompt: "Selecciona una especialidad"
+  .input-field
     =  f.submit "Guardar", class:"btn btn-primary indigo darken-3"
