@@ -1,0 +1,26 @@
+.row.mt-1
+  .col-xs
+    %h2
+      Ciudades
+    %table.table
+      %thead.thead-default
+        %tr
+          %th
+            Id
+          %th
+            Nombre
+          %th
+            Acciones
+      %tbody
+        - @cities.each do |city|
+          %tr
+            %td
+              = city.id
+            %td
+              = city.name
+            %td
+              -# =link_to 'Ver',admin_city_path(city), class: "btn"
+              =link_to 'Editar',edit_admin_city_path(city), class: "btn"
+              =link_to 'Borrar',admin_city_path(city), class: "btn", method: :delete, data: {confirm: "Estas seguro?"}
+.row.mt-1
+  =link_to "Nueva ciudad",new_admin_city_path(), class: "btn indigo darken-3"
