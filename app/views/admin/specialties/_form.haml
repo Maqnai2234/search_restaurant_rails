@@ -1,0 +1,7 @@
+= form_for [:admin, @specialty], class:"row s12" do |f|
+  = render 'partials/admin/form_errors', object: @specialty
+  .input-field
+    = f.label :name, "Especialidad"
+    = f.text_field :name, placeholder: "Ingrese una Especialidad" , class: "form-control"
+  .input-field
+    =  f.submit "Guardar", class:"btn btn-primary indigo darken-3"
