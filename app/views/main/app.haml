@@ -27,8 +27,8 @@
     -if !@restaurants.empty?
       - @restaurants.each do |restaurant|
         .col.s4
-          .card
-            .card-image.waves-effect.waves-block.waves-light.height-650
+          .card.height-650
+            .card-image.waves-effect.waves-block.waves-light
               =image_tag restaurant.image.url, class: "activator"
             .card-content
               %span.card-title.activator.grey-text.text-darken-4.center.center-align
