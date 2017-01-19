@@ -17,7 +17,16 @@
         =@string_welcome
   .row
     .col.s12
-      Búsqueda
+      %h4 Filtros
+  .row
+    .col.s3
+      especiliadad
+    .col.s3
+      Zona
+    .col.s3
+      Nombre
+    .col.s3
+      = link_to "Buscar", remove_city_path, class: "waves-effect waves-light btn indigo darken-3", method: :delete
   .row
     .col.s4
       .card
