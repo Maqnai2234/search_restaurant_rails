@@ -17,16 +17,23 @@
         =@string_welcome
   .row
     .col.s12
-      %h4 Filtros
+      %h5 Filtros:
   .row
-    .col.s3
-      especiliadad
-    .col.s3
-      Zona
-    .col.s3
-      Nombre
-    .col.s3
-      = link_to "Buscar", remove_city_path, class: "waves-effect waves-light btn indigo darken-3", method: :delete
+    =form_tag "/" do
+      .col.s3.input-field
+        %i.material-icons.prefix star
+        = text_field_tag "especiality", nil, class:"validate", id: "especiality"
+        = label_tag "especiality", "Especialidad"
+      .col.s3.input-field
+        %i.material-icons.prefix location_on
+        = text_field_tag "zone", nil, class:"validate", id: "zone"
+        = label_tag "zone", "Zona"
+      .col.s3.input-field
+        %i.material-icons.prefix verified_user
+        = text_field_tag "name", nil, class:"validate", id: "name"
+        = label_tag "name", "Nombre"
+      .col.s3
+        = link_to "Buscar", remove_city_path, class: "waves-effect waves-light btn indigo darken-3", method: :delete
   .row
     .col.s4
       .card

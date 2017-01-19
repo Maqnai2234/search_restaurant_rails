@@ -10,12 +10,16 @@ class MainController < ApplicationController
     if params[:city].nil?
       if session[:city].nil?
         redirect_to root_path
+      else
+        find_city
       end
     else
       session[:city] = params[:city]
+      find_city
     end
-    city = City.find(session[:city]).name
-    @string_welcome = "Te encuentras en: #{city}"
+
+
+
   end
 
   #Method DELETE
@@ -28,6 +32,11 @@ class MainController < ApplicationController
       unless session[:city].nil?
         redirect_to app_path
       end
+    end
+
+    def find_city
+      city = City.find(session[:city]).name
+      @string_welcome = "Te encuentras en: #{city}"
     end
 
 end
