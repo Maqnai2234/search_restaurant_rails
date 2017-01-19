@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title SearchRestaurantRails
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+    / Font awesome
+
+    %link{href: "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel: "stylesheet"}
+    / Compiled and minified CSS
+    %link{href: "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css", rel: "stylesheet"}
+    / Compiled and minified JavaScript
+    %script{src: "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"}
+
+    %link{href: "https://fonts.googleapis.com/icon?family=Material+Icons", rel: "stylesheet"}/
+
+
+  %body
+    = render 'partials/admin/nav'
+    = yield

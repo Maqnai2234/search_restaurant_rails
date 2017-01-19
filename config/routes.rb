@@ -6,6 +6,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/dashboard', to: "dashboard#index"
+    resources :restaurants do
+      resources :zones
+    end
+    resources :cities
+    resources :specialties
   end
 
   get '/admin' => redirect('/admin/dashboard')
