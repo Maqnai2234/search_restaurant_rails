@@ -1,6 +1,6 @@
 class Admin::ZonesController < Admin::BaseController
   before_action :find_restaurant
-  before_action :find_zone, only: [:edit, :update,:destroy]
+  before_action :find_zone, only: [:edit, :update,:destroy,:show]
   def new
 
     @zone = Zone.new
@@ -28,6 +28,10 @@ class Admin::ZonesController < Admin::BaseController
     else
       render 'edit'
     end
+  end
+
+  def show
+
   end
 
   def destroy

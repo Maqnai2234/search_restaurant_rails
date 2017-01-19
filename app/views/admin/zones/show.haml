@@ -1,0 +1,47 @@
+.row.mt-1
+  .col-xs
+    %h3
+      = @zone.restaurant.name
+    %p
+      %strong
+        Dirección:
+      = @zone.address
+    %p
+      %strong
+        Horario de atención:
+      = @zone.schedule
+    %p
+      %strong
+        Ciudad:
+      = @zone.city.name
+
+  %br
+
+  .row.mt-1
+    .col-xs
+      %h5
+        Telefonos
+      %table.table
+        %thead.thead-default
+          %tr
+            %th
+              Id
+            %th
+              Número
+            %th
+              Acciones
+        %tbody
+          - @zone.phones.each do |phone|
+            %tr
+              %td
+                = phone.id
+              %td
+                = phone.number
+              %td
+                -# =link_to 'Ver', admin_restaurant_zone_path(@restaurant,zone), class: "btn"
+                =link_to 'Editar',edit_admin_zone_phone_path(@zone,phone), class: "btn"
+                =link_to 'Borrar',admin_zone_phone_path(@zone,phone), class: "btn", method: :delete, data: {confirm: "Estas seguro?"}
+      -# .text-xs-center
+      -#   = paginate @posts
+  .row.mt-1
+    =link_to "Nuevo Teléfono",new_admin_zone_phone_path(@zone), class: "btn indigo darken-3"
