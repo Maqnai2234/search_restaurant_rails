@@ -1,2 +1,4 @@
-class Admin::CitiesController < ApplicationController
+class Admin::CitiesController < Admin::BaseController
+  def index
+  end
 end
