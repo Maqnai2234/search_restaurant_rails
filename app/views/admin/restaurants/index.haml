@@ -10,6 +10,8 @@
           %th
             Nombre
           %th
+            Imagen
+          %th
             Estrellas
           %th
             Zonas
@@ -23,11 +25,14 @@
             %td
               = restaurant.name
             %td
+              = image_tag restaurant.image.url, height: 120
+            %td
               = restaurant.stars
             %td
               = restaurant.zones.count
             %td
               =link_to 'Ver',admin_restaurant_path(restaurant), class: "btn"
+              =link_to 'Añadir Zonas',new_admin_restaurant_zone_path(restaurant), class: "btn"
               =link_to 'Editar',edit_admin_restaurant_path(restaurant), class: "btn"
               =link_to 'Borrar',admin_restaurant_path(restaurant), class: "btn", method: :delete, data: {confirm: "Estas seguro?"}
     -# .text-xs-center

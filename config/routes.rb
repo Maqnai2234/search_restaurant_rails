@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: "dashboard#index"
     resources :restaurants do
-      resources :zones
+      resources :zones, only: [:new,:create,:edit,:update,:destroy]
     end
     resources :cities
     resources :specialties
