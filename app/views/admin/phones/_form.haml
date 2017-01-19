@@ -1,0 +1,7 @@
+= form_for [:admin, @zone, @phone], class:"row s12" do |f|
+  = render 'partials/admin/form_errors', object: @phone
+  .input-field
+    = f.label :number, "Dirección"
+    = f.text_field :number, placeholder: "Ingrese un numero de telefono" , class: "form-control"
+  .input-field
+    =  f.submit "Guardar", class:"btn btn-primary indigo darken-3"
