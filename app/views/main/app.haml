@@ -8,50 +8,53 @@
     .col.s12
       %h5 Filtros:
   .row
-    =form_tag "/" do
+    =form_tag app_path do
       .col.s3.input-field
         %i.material-icons.prefix star
-        = text_field_tag "especiality", nil, class:"validate", id: "especiality"
+        = text_field_tag "speciality", nil, class:"validate", id: "especiality"
         = label_tag "especiality", "Especialidad"
       .col.s3.input-field
         %i.material-icons.prefix location_on
         = text_field_tag "zone", nil, class:"validate", id: "zone"
-        = label_tag "zone", "Zona"
+        = label_tag "zone", "Ingresa dirección"
       .col.s3.input-field
         %i.material-icons.prefix verified_user
         = text_field_tag "name", nil, class:"validate", id: "name"
         = label_tag "name", "Nombre"
       .col.s3
-        = link_to "Buscar", remove_city_path, class: "waves-effect waves-light btn indigo darken-3", method: :delete
+        = submit_tag "Buscar", class: "waves-effect waves-light btn indigo darken-3"
   .row
-    - @restaurants.each do |restaurant|
-      .col.s4
-        .card
-          .card-image.waves-effect.waves-block.waves-light
-            =image_tag restaurant.image.url, class: "activator"
-          .card-content
-            %span.card-title.activator.grey-text.text-darken-4.center.center-align
-              = restaurant.name
-            %p
-              %strong
-                Zonas:
-              - restaurant.zones.each do |zone|
-                %li
-                  = zone.address
-            %p
-              %strong
-                Especialidad:
-              = restaurant.speciality.name
-            %p
-              %strong
-                Horario de atención:
-              09:00am - 10:00pm
-            %p
-              %strong
-                Dirección:
-              9 de diciembre 209
-          .card-action
-            = link_to "Ver", remove_city_path, class: "waves-effect waves-light btn indigo darken-3"
+    -if !@restaurants.empty?
+      - @restaurants.each do |restaurant|
+        .col.s4
+          .card
+            .card-image.waves-effect.waves-block.waves-light
+              =image_tag restaurant.image.url, class: "activator"
+            .card-content
+              %span.card-title.activator.grey-text.text-darken-4.center.center-align
+                = restaurant.name
+              %p
+                %strong
+                  Zonas:
+                - restaurant.zones.each do |zone|
+                  %li
+                    = "#{zone.address} - #{zone.city.name}"
+              %p
+                %strong
+                  Especialidad:
+                = restaurant.speciality.name
+              %p
+                %strong
+                  Horario de atención:
+                09:00am - 10:00pm
+              %p
+                %strong
+                  Dirección:
+                9 de diciembre 209
+            .card-action
+              = link_to "Ver", remove_city_path, class: "waves-effect waves-light btn indigo darken-3"
+    - else
+      No tenemos ningun restaurant en esta ciudad, intenta en otra ciudad
   .row
     .col.s12.center
       = paginate @restaurants

@@ -19,9 +19,6 @@ class MainController < ApplicationController
       find_city
       app_content
     end
-
-
-
   end
 
   #Method DELETE
@@ -37,12 +34,21 @@ class MainController < ApplicationController
     end
 
     def find_city
-      city = City.find(session[:city]).name
-      @string_welcome = "Te encuentras en: #{city}"
+      @city = City.find(session[:city])
+      @string_welcome = "Te encuentras en: #{@city.name}"
     end
 
     def app_content
-      @restaurants = Restaurant.page(params[:page]).per(10)
+      permitted = params.permit(:speciality,:zone,:name)
+      if permitted[:speciality].present? || permitted[:zone].present? || permitted[:name].present?
+        speciality = permitted[:speciality]
+        zone = permitted[:zone]
+        name = permitted[:name]
+        @restaurants = Kaminari.paginate_array(@city.restaurants.search_filter(speciality,zone,name).distinct).page(params[:page]).per(10)
+      else
+        @restaurants = Kaminari.paginate_array(@city.restaurants.distinct).page(params[:page]).per(10)
+
+      end
     end
 
 end
