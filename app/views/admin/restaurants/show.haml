@@ -1,0 +1,48 @@
+.row.mt-1
+  .col-xs
+    %h3
+      = @restaurant.name
+    %p
+      %strong
+        Estrellas:
+      = @restaurant.stars
+    = image_tag @restaurant.image.url, height: 250
+
+  %p
+  .row.mt-1
+    .col-xs
+      %h5
+        Zonas
+      %table.table
+        %thead.thead-default
+          %tr
+            %th
+              Id
+            %th
+              Dirección
+            %th
+              Horario
+            %th
+              Ciudad
+            %th
+              Acciones
+        %tbody
+          - @restaurant.zones.each do |zone|
+            %tr
+              %td
+                = zone.id
+              %td
+                = zone.address
+              %td
+                = zone.schedule
+              %td
+                = zone.city.name
+              %td
+                =link_to 'Ver', admin_restaurant_zone_path(@restaurant,zone), class: "btn"
+                =link_to 'Añadir Telefonos',new_admin_zone_phone_path(zone), class: "btn"
+                =link_to 'Editar',edit_admin_restaurant_zone_path(@restaurant,zone), class: "btn"
+                =link_to 'Borrar',admin_restaurant_zone_path(@restaurant,zone), class: "btn", method: :delete, data: {confirm: "Estas seguro?"}
+      -# .text-xs-center
+      -#   = paginate @posts
+  .row.mt-1
+    =link_to "Nueva Zona",new_admin_restaurant_zone_path(@restaurant), class: "btn indigo darken-3"

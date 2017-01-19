@@ -35,6 +35,10 @@ class Admin::RestaurantsController < Admin::BaseController
     end
   end
 
+  def show
+    
+  end
+
   private
    def restaurant_params
      params.require(:restaurant).permit(:name, :image, :stars)
